@@ -1,16 +1,21 @@
-import java.util.Scanner;
+public class tictaktoe 
+{
 
-public class tictaktoe {
+    public static int[] convertToIndex(int slot) 
+    {
+        int row = (slot - 1) / 3;
+        int col = (slot - 1) % 3;
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int slot = getUserSlot(scanner);
-        System.out.println("Slot entered: " + slot);
-        scanner.close();
+        return new int[]{row, col};
     }
 
-    static int getUserSlot(Scanner scanner) {
-        int slot = scanner.nextInt();
-        return slot;
+    public static void main(String[] args) {
+        int slot = 5; // example input
+
+        int[] index = convertToIndex(slot);
+
+        System.out.println("Slot: " + slot);
+        System.out.println("Row: " + index[0]);
+        System.out.println("Column: " + index[1]);
     }
 }
