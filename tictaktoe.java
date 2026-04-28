@@ -1,21 +1,33 @@
 public class tictaktoe 
 {
-
-    public static int[] convertToIndex(int slot) 
+    public static boolean isValidMove(char[][] board, int row, int col) 
     {
-        int row = (slot - 1) / 3;
-        int col = (slot - 1) % 3;
+        if (row < 0 || row > 2 || col < 0 || col > 2) {
+            return false;
+        }
+        if (board[row][col] != '-') 
+        {
+            return false;
+        }
 
-        return new int[]{row, col};
+        return true; 
     }
 
-    public static void main(String[] args) {
-        int slot = 5; // example input
+    public static void main(String[] args) 
+    {
+        char[][] board = {
+            {'-', '-', '-'},
+            {'-', 'X', '-'},
+            {'-', '-', '-'}
+        };
 
-        int[] index = convertToIndex(slot);
+        int row = 1;
+        int col = 1;
 
-        System.out.println("Slot: " + slot);
-        System.out.println("Row: " + index[0]);
-        System.out.println("Column: " + index[1]);
+        if (isValidMove(board, row, col)) {
+            System.out.println("Valid Move");
+        } else {
+            System.out.println("Invalid Move");
+        }
     }
 }
